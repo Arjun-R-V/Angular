@@ -1,0 +1,25 @@
+<table >
+  <th>
+    <a href="" ng-click="orderByField='year'; reverseSort = !reverseSort">
+    Year
+    </a>
+  </th>
+  <th>
+    <a href="" ng-click="orderByField='under500'; reverseSort = !reverseSort">
+    Under 500
+    </a>
+  </th>
+  <th>
+    <a href="" ng-click="orderByField='headoffice'; reverseSort = !reverseSort">
+    Over 500
+  </a>
+  </th>
+  <th></th>
+  <tr ng-repeat="x in trial | filter:$ctrl.query | orderBy:orderByField:reverseSort">
+    <td><b>{{ x.year }} </b></td>
+    <td><b>{{ x.under500 }}</b></td>
+    <td><b>{{x.over500}}</b></td>
+    <td><button ng-click="remove(x)">Remove</button></td>
+  </tr>
+
+</table>

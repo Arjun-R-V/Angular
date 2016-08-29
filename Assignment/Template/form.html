@@ -1,0 +1,17 @@
+<form name="myForm">
+        <table>
+            <tr><th colspan="2"><b>New Crime Data</b></th></tr>
+            <tr><td><b>Year: </b></td><td><input name="year" type="number"
+                    ng-model="Year" placeholder="Year" max="2016" min="1947" required/>
+                  <span ng-show="myForm.year.$touched && myForm.year.$invalid">Enter a Valid Year</span></td></tr>
+                    <!-- <span ng-show="myForm.year.$touched && myForm.year.$invalid">Year is required.</span> -->
+            <tr><td><b>Below 500: </b></td><td><input type="number" name="below500"
+                    ng-model="Below500" placeholder="Below 500" required/>
+                  <span ng-show="myForm.below500.$touched && myForm.below500.$invalid">Below500 is required.</span></td></tr>
+            <tr><td><b>Above 500: </b></td><td><input type="number" name="over500"
+                    ng-model="Above500" placeholder="Above 500" required/>
+                    <span ng-show="myForm.over500.$touched && myForm.over500.$invalid">Above500 is required.</span></td></tr>
+            <tr><td>&nbsp;</td><td><input class="submit"
+               type="submit" ng-disabled="myForm.year.$dirty && myForm.year.$invalid || myForm.below500.$dirty && myForm.below500.$invalid || myForm.over500.$dirty && myForm.over500.$invalid" ng-click="SubmitLogin()"/></td></tr>
+        </table>
+    </form>

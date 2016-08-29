@@ -1,0 +1,49 @@
+<!doctype html>
+<html ng-app="dynamictable">
+<head>
+<title>data table</title>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+<script src="js/table.js"></script>
+<!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
+<style>
+table{background:#CCC;border:1px solid #000;}
+table td{padding:15px;border:1px solid #DDD;}
+li { display: inline;width:30px;height:20px;}
+.append{padding-top: 20px;}
+.pagination{padding-top: 20px;}
+</style>
+</head>
+<body ng-controller="userCtrl">
+<center><table>
+<thead>
+   <tr>      <span glyphicons class="glyphicons glyphicons-chevron-up"></span>
+         <th ng-click="sort('year')">year<span class="glyphicons sort-icon" ng-show="sortkey=='year'" ng-class="{'glyphicons-chevron-up':reverse,'glyphicons-chevron-down':!reverse}"></span></th>
+         <th ng-click="sort('under_$500')">under_$500<span class="glyphicons sort-icon" ng-show="sortkey=='under_$500'" ng-class="{'glyphicons-chevron-up':reverse,'glyphicons-chevron-down':!reverse}"></span></th>
+         <th ng-click="sort('over_$500')">over_$500<span class="glyphicons sort-icon" ng-show="sortkey=='over_$500'" ng-class="{'glyphicons-chevron-up':reverse,'glyphicons-chevron-down':!reverse}"></span></th>
+   </tr>
+</thead>
+<tbody>
+
+      <tr ng-repeat="crime in trial | orderBy:sortKey:reverse">
+      <td>{{ crime.year}}</td>
+      <td>{{ crime.under_$500}}</td>
+      <td>{{ crime.over_$500}}</td>
+      <td><button type="button" ng-click="delData(crime.year)">Delete</button></td>
+</tr>
+</tbody>
+</table>
+<div class="pagination">
+    <button type="button" ng-repeat="pageNo in pages" ng-click="page(pageNo)">{{pageNo}}</button>
+
+</div>
+<form class="append">
+  <input type="text" placeholder="Year" ng-model="add_year">
+  <input type="text" placeholder="Under_$500" ng-model="add_under">
+  <input type="text" placeholder="over_$500" ng-model="add_over">
+  <button type="button" ng-click="AddData()">Add</button>
+
+
+</form>
+</center>
+</body>
+</html>

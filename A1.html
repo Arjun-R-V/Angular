@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html ng-app="app1"ng-cloak>
+  <head>
+    <title> Angular </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="js/exam1.js"></script>
+  </head>
+  <style>
+  table{
+    width: 400px;
+    text-align: left;
+    border: 2px solid black;
+    padding: 10px;
+  }
+  input.ng-dirty.ng-invalid{
+    border.color:red;
+  }
+  </style>
+  <body>
+  <div ng-controller="glist">
+    <h3>groceries List</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Item </th>
+          <th>Purchased </th>
+        </tr>
+      </thead>
+      <tr ng-repeat="grocery in groceries">
+        <td>{{grocery.item}}</td>
+        <td>
+          <input type="checkbox" ng-model="grocery.purchased"/>
+        </td>
+      </tr>
+</table>
+<br>
+<label>New item :
+  <input type="text" ng-model="newItem"/>
+</label>
+<button ng-click="addItem(newItem)">Add item</button>
+<h4>{{missingNewItemError}}</h4>
+    </div>
+<div ng-controller="user">
+  <form name="userform" ng-submit="saveUser(userInfo)">
+    <label>First Name : </label>
+    <input type="text" name="fname"
+    ng-model="userInfo.fname"
+    ng-required="true" ng-minlength="2"/>
+    <span class="error-message"
+    ng-show="userForm.fName.$dirty && userForm.fname.$error.required">
+    Must Enter a First Name</span>
+<span class="error-message"
+ ng-show="userForm.fName.$dirty &&
+userForm.fname.$error.minLength">
+Must be a Minimum of 2 characters></span>
+<br></br>
+<label>Last Name : </label>
+<input type="text" name="lname"
+ng-model="userInfo.lname"
+ng-required="true" ng-minlength="2"/>
+<span class="error-message"
+ng-show="userForm.lName.$dirty && userForm.lname.$error.required">
+Must Enter a First Name</span>
+<span class="error-message"
+ng-show="userForm.lName.$dirty &&
+userForm.fname.$error.minLength">
+Must be a Minimum of 2 characters></span>
+<br></br>
+
+<label> Steet:</label>
+<input type="tect" name="street"
+ ng-model="userInfo.street"
+ ng-required="true" ng-minlength="6"/>
+ <span class="error-message"
+  ng-show="useFormstreet.$dirty && useForm.street.$dirty &&
+  useForm.street.$invalid">
+  Must Enter a number,street,and street type</span>
+  <br><br>
+  <label>Subscribe:</label>
+  <input type="checkbox" name="subscribe" ng-model="userInfo.subscribe"
+   ng-true-value="'Subscribe'" ng-false-value="'Don\'t Subscribe'" />
+  <br><br>
+  <label>Delivery Method:</label>
+  <select name="delivery" ng-model="userInfo.delivery"
+  ng-required="true">
+  <option value="Email">Email</option>
+  <option value="Mail">Mail</option>
+  </select>
+  <br><br>
+  <label>Delivery Method:</label>
+  <select name="delivery" ng-model="userInfo.delivery"  ng-required="true">
+    <option value="Email">Email</option>
+   <option value="Mail">Mail</option>
+   </select>
+   <br><br>
+   <input type="submit" value="save"
+   ng-disabled="userForm.$invalid"/>
+   <ul>
+     <li ng-repeat="item is user">
+       {{ 'User: ' + item.fName + " " + item.lName + " " + item.street +
+            " " + item.subscribe + " " + item.delivery}}
+     </li>
+   </ul>
+
+</form>
+  </body>
+</html>

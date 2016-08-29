@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html ng-app="app3"ng-cloak>
+  <head>
+    <title> Angular </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="js/exam3.js"></script>
+  </head>
+  <body>
+    <div id="glow" ng-controller="glist">
+      <h3 class="ListTiltle">{{groceries.length}} Groceries to get </h3>
+      <!-- <h3 class="ListTitle">
+        <span ng-bind="groceries.length"></span> Groceries to Get</h3> -->
+        <ol style="margin : 0 0 -15px 0;">
+          <li>{{groceries[0].item}}</li>
+        </ol>
+        <ol start="2">
+          <li ng-repeat="grocery in groceries" ng-if="$index > 0">
+            {{grocery.item}} {{$index}}
+          </li>
+          </ol>
+          <table>
+            <tr ng-repeat-start="grocery in groceries">
+              <td>
+                {{grocery.item}}
+              </td>
+            </tr>
+              <tr ng-repeat-end>
+                <td>
+                  {{grocery.purchased}}
+                </td>
+              </tr>
+            </table>
+            <label>change 1st item </label>
+            <input ng-model="groceries[2].item"/>
+            <h3> groceries list</h3>
+            <div ng-include="'A5.html'">
+            </div>
+            <label>
+            <input type="checkbox" ng-model="showList">
+            Show Unordered List
+          </label>
+          <ng-include src="getList()"></ng-include>
+          <label> type a number
+            <input type="text" ng-model="someNumber"/>
+          </label>
+          <div ng-switch="someNumber">
+            <p ng-switch-when="1">you Entered 1</p>
+              <p ng-switch-when="2">you Entered 2</p>
+          </div>
+
+    </div>
+
+  </body>
+</html>

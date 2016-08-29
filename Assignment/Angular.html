@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+<script src="Js/Angular.js"></script>
+  <link rel="stylesheet" href="css/Angular.css" />
+<body>
+<div ng-app="myApp" ng-controller="customersCtrl">
+<!-- Search Year: <input ng-model="$ctrl.query" /> -->
+
+<div form2></div>
+<div table1></div>
+<div class="pagination">
+<button type="button" ng-repeat="pageNo in pages" ng-click="page(pageNo)">{{pageNo}}</button>
+</div>
+<div form1></div>
+
+
+</div>
+
+
+</body>
+</html>

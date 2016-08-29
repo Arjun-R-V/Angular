@@ -1,0 +1,60 @@
+
+<style>
+
+table{background:#f0fff0;border:1px;  solid #000;  }
+table td{padding:20px;border:1px solid #DDD;}
+li { display: inline;width:30px;height:20px;}
+.append{padding-top: 30px;}
+.pagination{padding-top: 20px;}
+</style>
+
+      <div class="col-md-7">
+<center><table>
+<thead>
+<tr>
+     <span glyphicons class="glyphicons glyphicons-chevron-up"></span>
+         <th>Year<a ng-click="sort(year);"><span class="glyphicon glyphicon-sort" ng-class="{'glyphicons-chevron-up':reverse,'glyphicons-chevron-down':!reverse}"></span></a></th>
+        <th>under500<a ng-click="sort(under500);"><span class="glyphicon glyphicon-sort" ng-class="{'glyphicons-chevron-up':reverse,'glyphicons-chevron-down':!reverse}"></span></a></th>
+         <th>over500<a ng-click="sort(over500);"><span class="glyphicon glyphicon-sort" ng-class="{'glyphicons-chevron-up':reverse,'glyphicons-chevron-down':!reverse}"></span></a></th>
+   </tr>
+</thead>
+<tbody>
+
+      <tr ng-repeat="crime in trial | orderBy:sortKey:reverse">
+      <td>{{ crime.year}}</td>
+      <td>{{ crime.under500}}</td>
+      <td>{{ crime.over500}}</td>
+      <td><button type="button" ng-click="delData(crime.year)">Delete</button></td>
+</tr>
+</tbody>
+</table>
+<div class="pagination">
+    <button type="button" ng-repeat="pageNo in pages" ng-click="page(pageNo)">{{pageNo}}</button>
+
+</div>
+</div>
+<form name="myform" class="append">
+  <input type="number" placeholder="year" ng-model="add_year" name="year" ng-pattern="/^[0-9]{1,4}$/" required >
+  <span  ng-show="myform.year.$error.pattern">Not valid number!</span>
+<span ng-show="myForm.year.$error.required">This field is required!</span><br>
+  <input type="number" placeholder="under500" ng-model="add_under"name="under" ng-pattern="/^[0-9]{1,6}$/" required>
+  <span  ng-show="myform.under.$error.pattern">Not valid number!</span>
+  <span ng-show="myform.under.$error.required">This field is required!</span><br>
+  <input type="number" placeholder="over500" ng-model="add_over"name="over" ng-pattern="/^[0-9]{1,6}$/" required><br/>
+  <span  ng-show="myform.over.$error.pattern">Not valid number!</span>
+  <span ng-show="myForm.over.$error.required">This field is required!</span><br>
+
+  <button ng-disabled=myform.$invalid ng-click="AddData()">ADD</button></center>
+
+
+
+</form>
+</center>
+<div>
+        Year <select ng-model="year"  ng-required="true">
+                  <option value="year">year</option>
+                  <<option value="over" >over500</option>
+                  <option value="under">under500</option>
+            </select>
+            <input type="text">
+    </div>

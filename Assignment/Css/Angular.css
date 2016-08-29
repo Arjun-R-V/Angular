@@ -1,0 +1,36 @@
+table, th , td {
+  border: 2px solid grey;
+  border-collapse: collapse;
+  padding: 20px;
+  margin-top: 2%;
+  color: green;
+
+}
+table tr:nth-child(odd) {
+  background-color: #f1f1f1;
+
+}
+table tr:nth-child(even) {
+  background-color: #ffffff;
+}
+form{
+  margin-top: 50px;
+}
+input.ng-invalid {
+    background-color:	#F0E68C;
+}
+input.ng-valid {
+    background-color:lightgreen;
+}
+html
+{
+  margin-left: 35%;
+}
+button
+{
+  background-color: #DAF7A6;
+}
+.submit
+{
+  background-color:	#AFEEEE;
+}
